@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="mdl-js">
+<meta charset="UTF-8">
+<title>SaveThe.Click</title>
+
+<script>
+    window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min.js')
+    const shell = require('electron').shell
+    require('electron-cookies')
+</script>
+<script src="./material.js" type="text/javascript"></script>
+
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="material.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+    #view-source {
+        position: fixed;
+        display: block;
+        right: 0;
+        bottom: 0;
+        margin-right: 40px;
+        margin-bottom: 40px;
+        z-index: 900;
+    }
+
+    .image {
+        overflow: hidden;
+        /*object-fit: cover;*/
+        max-height: 100%;
+        max-width: 100%
+    }
+
+    .article > header {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+</style>
+</head>
+
+<body class="mdl-stc mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+            <a href="#content" class="mdl-layout__tab is-active">Summaries</a>
+            <a href="#features" class="mdl-layout__tab">Settings</a>
+            <a href class="mdl-layout__tab 12apps">12apps.co</a>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel is-active" id="content">
+            <section class="article section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="article">
+                <header class="section__play-btn mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color-text--white">
+                    <!--<i class="material-icons">play_circle_filled</i>-->
+                    <img src="http://12apps.co/content/images/2016/04/save-the-click.png" class="image">
+                </header>
+                <div class="mdl-card mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                    <div class="mdl-card__title mdl-card--border header">
+                        <!--<i class="material-icons">hourglass_empty</i><span class="minutes">5</span> mins-->
+                        <div id="icon1" class="material-icons mdl-badge mdl-badge--overlap reading-time" data-badge="1">
+                            hourglass_empty
+                        </div>
+                        <div id="icon2" class="material-icons mdl-badge mdl-badge--overlap word-count" data-badge="555">
+                            subject
+                        </div>
+                        <i id="icon3" class="material-icons sentiment">sentiment_neutral</i>
+                        <!--<button id="icon5"-->
+                        <!--class="mdl-button mdl-js-button mdl-button&#45;&#45;icon">-->
+                        <!--<i class="material-icons">label_outline</i>-->
+                        <!--</button>-->
+                        <!--&lt;!&ndash;<ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect"&ndash;&gt;-->
+                        <!--&lt;!&ndash;for="icon5" style="display:none;">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li class="mdl-menu__item">Some Action</li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li class="mdl-menu__item mdl-menu__item&#45;&#45;full-bleed-divider">Another Action</li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li disabled class="mdl-menu__item">Disabled Action</li>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<button id="icon6"&ndash;&gt;-->
+                        <!--&lt;!&ndash;class="mdl-button mdl-js-button mdl-button&#45;&#45;icon">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="material-icons">thumb_down</i>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                        <div class="mdl-tooltip mdl-tooltip--right" for="icon1">
+                            Reading time in minutes
+                        </div>
+                        <div class="mdl-tooltip mdl-tooltip--right" for="icon2">
+                            Word count
+                        </div>
+                        <div class="mdl-tooltip mdl-tooltip--right" for="icon3">
+                            Sentiment
+                        </div>
+                        <div class="mdl-tooltip mdl-tooltip--right" for="icon4">
+                            Negative sentiment
+                        </div>
+                        <!--<div class="mdl-tooltip mdl-tooltip&#45;&#45;right" for="icon5">-->
+                        <!--Keywords list-->
+                        <!--</div>-->
+                        <!--<div class="mdl-tooltip mdl-tooltip&#45;&#45;right" for="icon6">-->
+                        <!--This result sucks-->
+                        <!--</div>-->
+                    </div>
+
+                    <div class="mdl-card__supporting-text">
+                        <span class="summary">
+                        Copy a URL to the clipboard to get started!
+                        </span>
+                    </div>
+                    <div class="mdl-card__actions">
+                        <a href="#" class="mdl-button link">Read</a>
+                    </div>
+                    <div class="mdl-card__menu" style="display:none">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn1">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <div class="mdl-layout__tab-panel" id="features">
+            <section class="section--center mdl-grid mdl-grid--no-spacing">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <h4>Settings</h4>
+
+                    <label for="settings-popup" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                        <input type="checkbox" id="settings-popup" class="mdl-switch__input">
+                        <span class="mdl-switch__label">Popup window when new summary available</span>
+                    </label>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+<script>
+    var count = 0;
+    require("electron").ipcRenderer.on('summary', function (event, article) {
+        count++;
+        console.log(article);
+
+        var newSummary = jQuery('#article').clone();
+
+        // format article
+        jQuery(newSummary).removeAttr('id');
+        jQuery(newSummary).find('header .image').attr('src', article.image);
+        jQuery(newSummary).find('header .image').remove();
+        jQuery(newSummary).find('header').css('background-image', 'url(' + article.image + ')');
+
+        article.summary = article.summary.replace('\n', '<br>');
+        article.summary = limitWords(article.summary, 100);
+        jQuery(newSummary).find('.summary').html(article.summary);
+        if (!article.stats.minutes || article.stats.minutes == 0) article.stats.minutes = '?';
+        jQuery(newSummary).find('.reading-time').attr('data-badge', article.stats.minutes);
+        if (article.stats.words > 999) article.stats.words = '1k+';
+        if (!article.stats.words || article.stats.words == 0) article.stats.words = '?';
+        jQuery(newSummary).find('.word-count').attr('data-badge', article.stats.words);
+        jQuery(newSummary).find('.link').attr('data-href', article.canonicalLink);
+        jQuery(newSummary).find('*[id^=icon]').each(function () {
+            jQuery(this).attr('id', jQuery(this).attr('id') + '-' + count);
+            jQuery(this).removeAttr('data-upgraded');
+        });
+        jQuery(newSummary).find('*[for^=icon]').each(function () {
+            jQuery(this).attr('for', jQuery(this).attr('for') + '-' + count);
+        });
+
+        jQuery(newSummary).find('.mdl-menu').unwrap('.mdl-menu__container');
+        jQuery(newSummary).find('.mdl-menu__outline').remove();
+        jQuery(newSummary).find('*').removeAttr('data-upgraded');
+        if (article.stats.sentiment < -.05) jQuery(newSummary).find('.sentiment').text('sentiment_very_dissatisfied');
+        if (article.stats.sentiment >= -.05 && article.stats.sentiment <= -.01) jQuery(newSummary).find('.sentiment').text('sentiment_dissatisfied');
+        if (article.stats.sentiment >= .01 && article.stats.sentiment <= .05) jQuery(newSummary).find('.sentiment').text('sentiment_satisfied');
+        if (article.stats.sentiment > .05) jQuery(newSummary).find('.sentiment').text('sentiment_very_satisfied');
+
+        jQuery(newSummary).find('.link').click(function () {
+            shell.openExternal(article.canonicalLink);
+        });
+
+        jQuery('#content').prepend(newSummary);
+        jQuery(newSummary).show();
+
+        componentHandler.upgradeElements(document.querySelectorAll('.mdl-tooltip, .mdl-menu'));
+
+        function limitWords(textToLimit, wordLimit) {
+            var finalText = "";
+            var text2 = textToLimit.replace(/\s+/g, ' ');
+            var text3 = text2.split(' ');
+            var numberOfWords = text3.length;
+            var i = 0;
+            if (numberOfWords > wordLimit) {
+                for (i = 0; i < wordLimit; i++)
+                    finalText = finalText + " " + text3[i] + " ";
+                return finalText + "...";
+            }
+            else return textToLimit;
+        }
+    });
+    if (localStorage.getItem('settings-popup') === 'true') {
+        require('electron').ipcRenderer.send('settings-popup', true)
+        jQuery('#settings-popup').prop('checked', true)
+    }
+    else {
+        require('electron').ipcRenderer.send('settings-popup', false)
+        jQuery('#settings-popup').prop('checked', false)
+    }
+    jQuery('#settings-popup').change(function () {
+        if (jQuery('#settings-popup').prop('checked')) {
+            require('electron').ipcRenderer.send('settings-popup', true)
+            localStorage.setItem('settings-popup', 'true')
+        }
+        else {
+            require('electron').ipcRenderer.send('settings-popup', false)
+            localStorage.setItem('settings-popup', 'false')
+        }
+    })
+    jQuery('.12apps').click(function () {
+        shell.openExternal('http://12apps.co');
+    })
+</script>
+</body>
+</html>
